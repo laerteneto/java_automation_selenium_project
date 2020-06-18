@@ -11,7 +11,7 @@ public class ProductPage extends BasePage {
 	 * 
 	 */
 	public void addProductToBasket() {
-		By addToBasketButton = ProductMap.buttonByText(" Add to basket");
+		By addToBasketButton = ProductMap.elementByTypeAndText("button", " Add to basket");
 		waitForElementToBeVisible(addToBasketButton, MAX_TIME);
 		clickElement(addToBasketButton);
 	}
@@ -19,17 +19,17 @@ public class ProductPage extends BasePage {
 	/**
 	 * Validates if the message "You have saved the following item in your shopping basket." is being displayed
 	 * 
-	 * @return true or false
+	 * @return True or false
 	 */
 	public Boolean isProductSavedMessageDisplayed() {
-		By message = ProductMap.h2ByText("You have saved the following item in your shopping basket.");
+		By message = ProductMap.elementByTypeAndText("h2", "You have saved the following item in your shopping basket.");
 		return elementExists(message, true);
 	}
 	
 	/**
 	 * Validates if the product name is shown on confirmation modal 
 	 * 
-	 * @return true or false
+	 * @return True or false
 	 */
 	public Boolean isProductSavedOnTheShoppingBasket(String name) {
 		By productName = ProductMap.productNameOnModal(name);
@@ -41,7 +41,7 @@ public class ProductPage extends BasePage {
 	 * 
 	 */
 	public void goToShoppingBasket() {
-		By goToBasketButton = ProductMap.buttonByText(" Go to shopping basket");
+		By goToBasketButton = ProductMap.elementByTypeAndText("button", " Go to shopping basket");
 		waitForElementToBeClickable(goToBasketButton, MAX_TIME);
 		clickElementJS(goToBasketButton);
 	}

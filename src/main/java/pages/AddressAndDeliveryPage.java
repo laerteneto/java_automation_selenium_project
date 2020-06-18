@@ -1,47 +1,39 @@
 package pages;
 
-import org.openqa.selenium.By;
+import maps.AddressAndDeliveryMap;
 
 public class AddressAndDeliveryPage extends BasePage {
-	
+
 	/**
 	 * Proceed as guest with email information
 	 * 
-	 * @return true or false
+	 * @param email Guest email
 	 */
 	public void proceedAsGuestWithEmailInformation(String email) {
-		By emailField = By.id("dcp-login-guest-user-email");
-		waitForElementToBeVisible(emailField, MAX_TIME);
-		writeTextInField(emailField, email);
+		waitForElementToBeVisible(AddressAndDeliveryMap.emailField, MAX_TIME);
+		writeTextInField(AddressAndDeliveryMap.emailField, email);
 		clickButtonByText("Place order as guest");
 	}
-	
+
 	/**
-	 * Fill out the form with a specific postal code, and the other values 
+	 * Fill out the form with a specific postal code, and the other values
 	 * 
-	 * @return true or false
+	 * @param postalCode The postal code
 	 */
 	public void fillOutTheFormWithSpecificPostalCode(String postalCode) {
-		By firstNameField = By.id("co_payment_address-firstName");
-		waitForElementToBeVisible(firstNameField, MAX_TIME);
-		writeTextInField(firstNameField, "Laerte");
+		waitForElementToBeVisible(AddressAndDeliveryMap.firstNameField, MAX_TIME);
+		writeTextInField(AddressAndDeliveryMap.firstNameField, "Laerte");
 		
-		By salutationRadio = By.id("co_payment_address-salutationCode-radio-id-0");
-		clickElementJS(salutationRadio);
+		clickElementJS(AddressAndDeliveryMap.salutationRadio);
 		
-		By lastNameField = By.id("co_payment_address-lastName");
-		writeTextInField(lastNameField, "Neto");
+		writeTextInField(AddressAndDeliveryMap.lastNameField, "Neto");
 		
-		By streetField = By.id("co_payment_address-line1");
-		writeTextInField(streetField, "Main Street");
+		writeTextInField(AddressAndDeliveryMap.streetField, "Main Street");
 		
-		By numberField = By.id("co_payment_address-line2");
-		writeTextInField(numberField, "10");
+		writeTextInField(AddressAndDeliveryMap.numberField, "10");
 		
-		By postalCodeField = By.id("co_payment_address-postalCode");
-		writeTextInField(postalCodeField, postalCode);
+		writeTextInField(AddressAndDeliveryMap.postalCodeField, postalCode);
 		
-		By townField = By.id("co_payment_address-town");
-		writeTextInField(townField, "London");
+		writeTextInField(AddressAndDeliveryMap.townField, "London");
 	}
 }

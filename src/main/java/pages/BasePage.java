@@ -20,7 +20,7 @@ public class BasePage implements Data {
 	/**
 	 * Access the given url
 	 * 
-	 * @param link url to be accessed
+	 * @param link Url to be accessed
 	 */
 	public void accessUrl(String link) {
 		getDriver().get(link);
@@ -30,10 +30,10 @@ public class BasePage implements Data {
 	 * Write a text in a field
 	 * 
 	 * @param locator Field locator where the text will by typed
-	 * @param texto   Text bo be typed
+	 * @param text   Text to be typed
 	 */
-	public void writeTextInField(By locator, String texto) {
-		getDriver().findElement(locator).sendKeys(texto);
+	public void writeTextInField(By locator, String text) {
+		getDriver().findElement(locator).sendKeys(text);
 	}
 
 	/**
@@ -48,7 +48,7 @@ public class BasePage implements Data {
 	}
 
 	/**
-	 * Click on a button using a JS function
+	 * Click on an element using a JS function
 	 * 
 	 * @param locator Element locator
 	 */
@@ -75,8 +75,8 @@ public class BasePage implements Data {
 	/**
 	 * Wait for an element to be clickable
 	 * 
-	 * @param locator element locator
-	 * @param time    max time
+	 * @param locator Element locator
+	 * @param time    Max waiting time
 	 */
 	public void waitForElementToBeClickable(By locator, int time) {
 		WebDriverWait wait = new WebDriverWait(getDriver(), time);
@@ -86,8 +86,8 @@ public class BasePage implements Data {
 	/**
 	 * Wait for an element to be visible
 	 * 
-	 * @param locator element locator
-	 * @param time    max time
+	 * @param locator Element locator
+	 * @param time    Max waiting time
 	 */
 	public void waitForElementToBeVisible(By locator, int time) {
 		WebDriverWait wait = new WebDriverWait(getDriver(), time);
@@ -97,10 +97,10 @@ public class BasePage implements Data {
 	/**
 	 * Validate if an element exists and is displayed, or if it does not exist
 	 * 
-	 * @param locator     element locator
-	 * @param shouldExist true or false
+	 * @param locator     Element locator
+	 * @param shouldExist True or false
 	 * 
-	 * @return true or false
+	 * @return True or false
 	 */
 	public boolean elementExists(By locator, boolean shouldExist) {
 		if (shouldExist) {
@@ -118,7 +118,7 @@ public class BasePage implements Data {
 	 * @param text Text on the button
 	 */
 	public void clickButtonByText(String text) {
-		By button = BaseMap.buttonByText(text);
+		By button = BaseMap.elementByTypeAndText("button", text);
 		waitForElementToBeClickable(button, MAX_TIME);
 		clickElementJS(button);
 	}

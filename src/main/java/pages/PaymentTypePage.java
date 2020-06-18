@@ -1,23 +1,26 @@
 package pages;
 
+import static maps.BaseMap.elementByTypeAndText;
+
 import org.openqa.selenium.By;
 
-import maps.BaseMap;
+import maps.PaymentTypeMap;
 
 public class PaymentTypePage extends BasePage {
 
 	/**
-	 * Select the payment type
+	 * Select the payment option
 	 * 
-	 * @param paymentType can be Credit Card or PayPal
+	 * @param paymentType Can be Credit Card or PayPal
 	 */
 	public void selectThePaymentType(String paymentType) {
-		waitForElementToBeVisible(BaseMap.h3ByText("Your payment type"), MAX_TIME);
+		waitForElementToBeVisible(elementByTypeAndText("h3", "Your payment type"), MAX_TIME);
+		
 		By paymentOption;
 		if (paymentType.contentEquals("Credit Card")) {
-			paymentOption = By.id("dcp-co-payment-modes_options-CREDITCARD");
+			paymentOption = PaymentTypeMap.creditCardRadioButton;
 		} else { // paymentType == PayPal
-			paymentOption = By.id("dcp-co-payment-modes_options-paypal");
+			paymentOption = PaymentTypeMap.payPalRadioButton;
 		}
 		clickElementJS(paymentOption);
 	}
@@ -30,13 +33,13 @@ public class PaymentTypePage extends BasePage {
 	public void selectTheCardBrand(String cardBrand) {
 		By cardBrandOption;
 		if (cardBrand.contentEquals("VISA")) {
-			cardBrandOption = By.id("visa");
+			cardBrandOption = PaymentTypeMap.visaRadioButton;
 		} else if (cardBrand.contentEquals("MasterCard")) {
-			cardBrandOption = By.id("mastercard");
+			cardBrandOption = PaymentTypeMap.mastercardRadioButton;
 		} else { // cardBrand == American Express
-			cardBrandOption = By.id("amex");
+			cardBrandOption = PaymentTypeMap.amexRadioButton;
 		}
-		waitForElementToBeVisible(BaseMap.labelByText(cardBrand), MAX_TIME);
+		waitForElementToBeVisible(elementByTypeAndText("label", cardBrand), MAX_TIME);
 		clickElementJS(cardBrandOption);
 	}
 }

@@ -9,6 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class DriverFactory {
 
 	private static WebDriver driver;
+	private static int IMPLICITY_WAIT_DEFAULT_TIME = 30;
 
 	public static WebDriver getDriver() {
 		if (driver == null)
@@ -33,11 +34,10 @@ public class DriverFactory {
 		}
 		
 		// Implicity wait for general driver control
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(IMPLICITY_WAIT_DEFAULT_TIME, TimeUnit.SECONDS);
 
 		// WebDriver setup
 		driver.manage().window().maximize();
-
 	}
 
 	public static void killDriver() {

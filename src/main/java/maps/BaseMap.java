@@ -4,23 +4,16 @@ import org.openqa.selenium.By;
 
 public class BaseMap {
 
-	public static By buttonByText(String buttonName) {
-		return By.xpath("//button[text()='" + buttonName + "']");
-	}
-
-	public static By h2ByText(String text) {
-		return By.xpath("//h2[text()='" + text + "']");
-	}
-
-	public static By spanByText(String text) {
-		return By.xpath("//span[text()='" + text + "']");
-	}
-
-	public static By h3ByText(String text) {
-		return By.xpath("//h3[text()='" + text + "']");
-	}
-
-	public static By labelByText(String text) {
-		return By.xpath("//label[text()='" + text + "']");
+	/**
+	 * Creates a locator by xpath in the format: //type[text()='text']
+	 * Example: type = button, text = Accept -> Returns //button[text()='Accept']
+	 * 
+	 * @param type Element DOM type, example: span, div, button...
+	 * @param text The text in the element
+	 * 
+	 * @return The locator by xpath
+	 */
+	public static By elementByTypeAndText(String type, String text) {
+		return By.xpath("//" + type + "[text()='" + text + "']");
 	}
 }
