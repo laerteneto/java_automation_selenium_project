@@ -10,7 +10,7 @@ We use maeven repository to take  care of all dependencies. So, in order to use 
 - Do not forget to set JAVA 1.8 as the Java compiler:
 - If you are using Eclipse IDE:
  > just click with the right button in the root projet, click in Propierties, Java Build Path, and  select the libraries tab(Make sure you are using JAVA 1.8).
- >To set the correct compiler, click with the right button in the root projet, click in Propierties, Java Compiler, in Compiler compliance level make sure it is 1.8
+ >To set the correct compiler, click with the right button in the root projet, click in Properties, Java Compiler, in Compiler compliance level make sure it is 1.8
 
 ## Drivers supported:
 Chome version: 83, ChromeDriver 83.0.4103.39
@@ -20,7 +20,7 @@ Firefox version: 77, Geckodriver v0.26.0
 If you are using Eclipse IDE, you may Install the Cucumber Eclipse Plugin via Eclipse Marketplace in order to see the features with a better view
 
 ## How to run:
-Make sure the chromedriver and geckodriver inside of src/main/resources have permitions to run as an executable: In linux, inside the folder, you can execute: "chmod -R 777 ."
+Make sure the chromedriver and geckodriver inside of src/main/resources have permitions to run as an executable: In linux, inside the folder, you can execute: <code>chmod -R 777</code>
 Execute, as a JUnit test, the file MercedesShopRunner.java, located in src/main/java/runners
 
 ### How to choose between Chrome or Firefox:
