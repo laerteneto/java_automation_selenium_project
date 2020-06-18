@@ -26,7 +26,7 @@ Inside this project you will find the following drivers for **LINUX**:
 - Also, if you are using Windows Os Systems, make sure to add the ".exe" in the chromeDriverPath and firefoxDriverPath located inside src/main/java/Configurations.java
 
 ## How to choose between Chrome or Firefox:
-Go to the Configurations.java file located in *scr/main/java/core* and modify the browser enum as you want.
+Go to the Configurations.java file located in *scr/main/java/core* and modify the browser enum as you want. The Chrome is the default.
 
 ## How to run:
 - Execute the file *MercedesShopRunner.java* located in *src/main/java/runners* as a **JUnit test**.
