@@ -20,7 +20,7 @@ Inside this project you will find the following drivers for **LINUX**:
 
 **Make sure:**
 - The chromedriver and geckodriver located on *src/main/resources* have permitions to run as an executable: 
- >In UNIX based OS, inside the folder *src/main/resources*, you can execute the command: `chmod -R 777`.
+ >> In UNIX based OS, inside the folder *src/main/resources*, you can execute the command: `chmod -R 777`.
 
 - You can use different Chrome or Firefox versions, but make sure to update their driver files accordingly.
 
