@@ -1,25 +1,38 @@
 package maps;
 
+import org.openqa.selenium.By;
+
 public class BaseMap {
 
-	public static String inputField(String labelName) {
-		return "//label[contains(text(), '" + labelName + "')]/following-sibling::div//input";
+	public static By inputField(String labelName) {
+		return By.xpath("//label[contains(text(), '" + labelName + "')]/following-sibling::div//input");
 	}
 
-	public static String textAreaField(String labelName) {
-		return "//label[contains(text(), '" + labelName + "')]/following-sibling::div//textarea";
+	public static By textAreaField(String labelName) {
+		return By.xpath("//label[contains(text(), '" + labelName + "')]/following-sibling::div//textarea");
 	}
 
-	public static String buttonByText(String buttonName) {
-		return "//button[contains(text(), '" + buttonName + "')]";
+	public static By buttonByContainsText(String buttonName) {
+		return By.xpath("//button[contains(text(), '" + buttonName + "')]");
 	}
 
-	public static String successMessage() {
-		return "//h1[contains(text(), 'mesageeeeeee')]";
+	public static By buttonByText(String buttonName) {
+		return By.xpath("//button[text()='" + buttonName + "']");
+	}
+	
+	public static By h2ByText(String text) {
+		return By.xpath("//h2[text()='" + text + "']");
 	}
 
-	public static String messageMandatoryField(String FieldLabel) {
-		return "//div[@class='form-feedback-item help-block']/..//label[contains(text(),'" + FieldLabel + "')]";
+	public static By spanByText(String text) {
+		return By.xpath("//span[text()='" + text + "']");
 	}
-
+	
+	public static By h3ByText(String text) {
+		return By.xpath("//h3[text()='" + text + "']");
+	}
+	
+	public static By labelByText(String text) {
+		return By.xpath("//label[text()='" + text + "']");
+	}
 }

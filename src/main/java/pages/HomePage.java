@@ -1,5 +1,7 @@
 package pages;
 
+import org.openqa.selenium.By;
+
 import maps.HomeMap;
 
 public class HomePage extends BasePage {
@@ -10,6 +12,18 @@ public class HomePage extends BasePage {
 	public void accessHomePage() {
 		accessUrl(baseURL);
 	}
+	
+	/**
+	 * Agree with Cookies, if available
+	 * @throws InterruptedException 
+	 */
+	public void agreeWithCookies() {
+		By agreeWithCookiesButton = HomeMap.buttonByText("Agree");
+		if (elementExists(agreeWithCookiesButton, true)) {
+			clickElement(agreeWithCookiesButton);
+			forcedWait(10);
+		}
+	}
 
 	/**
 	 * Open the products list by the banner
@@ -17,7 +31,9 @@ public class HomePage extends BasePage {
 	 * @param produtType Can be for example Woman, Men, and Children 
 	 */
 	public void openProductsList(String produtType) {
-		clickElement(HomeMap.fashionAndBeautyBannerByKind(produtType));
+		By banner = HomeMap.fashionAndBeautyBannerByKind(produtType);
+		waitForElementToBeVisible(banner, MAX_TIME);
+		clickElement(banner);
 	}
 
 }

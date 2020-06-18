@@ -3,14 +3,16 @@ package pages;
 import static core.DriverFactory.getDriver;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import core.Data;
+import maps.BaseMap;
 
-public class BasePage implements Data{
-	
+public class BasePage implements Data {
+
 	public BasePage() {
 		super();
 	}
@@ -35,25 +37,7 @@ public class BasePage implements Data{
 	}
 
 	/**
-	 * Validates if a text is displayed in the screen
-	 * 
-	 * @param locator Element locator you want to verify
-	 */
-	public boolean validatesTextDisplayed(By locator) {
-		return ((getDriver().findElements(locator).size() > 0) && (getDriver().findElement(locator).isDisplayed()));
-	}
-
-	/**
-	 * Validates if a text is NOT displayed in the screen
-	 * 
-	 * @param locator Element locator you want to verify
-	 */
-	public boolean validatesTextNotDisplayed(By locator) {
-		return (getDriver().findElements(locator).size() == 0);
-	}
-
-	/**
-	 * Click in a element
+	 * Click on a element
 	 * 
 	 * @param locator Element locator
 	 */
@@ -63,36 +47,78 @@ public class BasePage implements Data{
 	}
 
 	/**
-	 * Click in a button using a JS function
+	 * Click on a button using a JS function
 	 * 
 	 * @param locator Element locator
 	 */
-	public void clickButtonJS(By locator) {
+	public void clickJS(By locator) {
+		WebElement elemento = getDriver().findElement(locator);
+		JavascriptExecutor ex = (JavascriptExecutor) getDriver();
+		ex.executeScript("arguments[0].click()", elemento);
+	}
+
+	/**
+	 * Forced wait
+	 * 
+	 * @param time Time is seconds
+	 */
+	public void forcedWait(int time) {
 		try {
-			WebElement element = getDriver().findElement(locator);
-
-			System.out.println("Waiting until the button is able to be clicked");
-			WebDriverWait wait = new WebDriverWait(getDriver(), 30);
-			wait.until(ExpectedConditions.elementToBeClickable(element));
-			element.click();
-			System.out.println("Click is done!");
-
+			Thread.sleep(time * 1000);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
 
 	/**
-	 * Forced wait
+	 * Wait for an element to be clickable
 	 * 
-	 * @param tempo Time is seconds
+	 * @param locator element locator
+	 * @param time max time
 	 */
-	public void esperaForcada(int tempo) {
-		try {
-			Thread.sleep(tempo * 1000);
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
+	public void waitForElementToBeClickable(By locator, int time) {
+		WebDriverWait wait = new WebDriverWait(getDriver(), time);
+		wait.until(ExpectedConditions.elementToBeClickable(locator));
+	}
+
+	/**
+	 * Wait for an element to be visible
+	 * 
+	 * @param locator element locator
+	 * @param time max time
+	 */
+	public void waitForElementToBeVisible(By locator, int time) {
+		WebDriverWait wait = new WebDriverWait(getDriver(), time);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	}
+
+	/**
+	 * Validate if an element exists and is displayed, or if it does not exist
+	 * 
+	 * @param locator     element locator
+	 * @param shouldExist true or false
+	 * 
+	 * @return true or false
+	 */
+	public boolean elementExists(By locator, boolean shouldExist) {
+		if (shouldExist) {
+			waitForElementToBeVisible(locator, MAX_TIME);
+			return getDriver().findElements(locator).size() > 0 && getDriver().findElement(locator).isDisplayed();
+		} else {
+			waitForElementToBeVisible(locator, MIN_TIME);
+			return getDriver().findElements(locator).size() == 0;
 		}
+	}
+	
+	/**
+	 * Click on a button by text
+	 * 
+	 * @param text Text on the button
+	 */
+	public void clickButtonByText(String text) {
+		By button = BaseMap.buttonByText(text);
+		waitForElementToBeClickable(button, MAX_TIME);
+		clickJS(button);
 	}
 
 }
