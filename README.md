@@ -14,10 +14,16 @@ We use maeven repository to take care of all dependencies. So, in order to use t
  >To set the correct compiler, click with the right button in the root projet, click in Properties, Java Compiler, in Compiler compliance level make sure it is 1.8.
 
 ## Drivers:
+Inside this project you will find the following drivers for **LINUX**:
 - Chome version: 83, ChromeDriver 83.0.4103.39.
 - Firefox version: 77, Geckodriver v0.26.0.
-- Make sure the chromedriver and geckodriver inside of *src/main/resources* have permitions to run as an executable: In linux, inside the folder, you can execute: `chmod -R 777`.
+
+**Make sure:**
+- The chromedriver and geckodriver located on *src/main/resources* have permitions to run as an executable: 
+ >> In UNIX based OS, inside the folder *src/main/resources*, you can execute the command: `chmod -R 777`.
+
 - You can use different Chrome or Firefox versions, but make sure to update their driver files accordingly.
+- Also, if you are using Windows Os Systems, make sure to add the ".exe" in the chromeDriverPath and firefoxDriverPath located inside src/main/java/Configurations.java
 
 ## How to choose between Chrome or Firefox:
 Go to the Configurations.java file located in *scr/main/java/core* and modify the browser enum as you want.

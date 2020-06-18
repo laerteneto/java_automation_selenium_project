@@ -22,17 +22,15 @@ public class DriverFactory {
 		// Choose driver
 		switch (Configurations.browser) {
 		case CHROME:
-			System.setProperty("webdriver.chrome.driver",
-					System.getProperty("user.dir") + "/src/main/resources/driver/chromedriver");
+			System.setProperty("webdriver.chrome.driver", Configurations.chromeDriverPath);
 			driver = new ChromeDriver();
 			break;
 		case FIREFOX:
-			System.setProperty("webdriver.gecko.driver",
-					System.getProperty("user.dir") + "/src/main/resources/driver/geckodriver");
+			System.setProperty("webdriver.gecko.driver", Configurations.firefoxDriverPath);
 			driver = new FirefoxDriver();
 			break;
 		}
-		
+
 		// Implicity wait for general driver control
 		driver.manage().timeouts().implicitlyWait(IMPLICITY_WAIT_DEFAULT_TIME, TimeUnit.SECONDS);
 
