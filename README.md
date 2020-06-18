@@ -13,20 +13,22 @@ We use maeven repository to take care of all dependencies. So, in order to use t
  
  >To set the correct compiler, click with the right button in the root projet, click in Properties, Java Compiler, in Compiler compliance level make sure it is 1.8.
 
-## Drivers supported:
+## Drivers:
 - Chome version: 83, ChromeDriver 83.0.4103.39.
 - Firefox version: 77, Geckodriver v0.26.0.
+- Make sure the chromedriver and geckodriver inside of *src/main/resources* have permitions to run as an executable: In linux, inside the folder, you can execute: `chmod -R 777`.
+- You can use different Chrome or Firefox versions, but make sure to update their driver files accordingly.
 
-## Not required, but good to have:
-If you are using Eclipse IDE, you may Install the Cucumber Eclipse Plugin via Eclipse Marketplace in order to see the features with a better view.
+## How to choose between Chrome or Firefox:
+Go to the Configurations.java file located in *scr/main/java/core* and modify the browser enum as you want.
 
 ## How to run:
-- You can use any Chrome and Firefox versions, but make sure to update the driver file accordingly.
-- Make sure the chromedriver and geckodriver inside of *src/main/resources* have permitions to run as an executable: In linux, inside the folder, you can execute: `chmod -R 777`.
 - Execute the file *MercedesShopRunner.java* located in *src/main/java/runners* as a **JUnit test**.
 
-### How to choose between Chrome or Firefox:
-Go to the Configurations.java file located in *scr/main/java/core* and modify the browser enum as you want.
+_________________
+
+### Not required, but good to have:
+If you are using Eclipse IDE, you may Install the Cucumber Eclipse Plugin via Eclipse Marketplace in order to see the features with a better view.
 
 ### The evidences:
 The test evidences will be saved in *src/main/resources/screenshots*.
