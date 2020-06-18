@@ -5,6 +5,7 @@ import static core.DriverFactory.killDriver;
 
 import org.junit.Assert;
 
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
@@ -18,9 +19,11 @@ import pages.ProductPage;
 import pages.ProductSearchPage;
 import pages.ShoppingBasketPage;
 import pages.VerificationAndOrderPlacementPage;
+import utils.TakeScreenshotUtils;
 
 public class MercedesShopSteps {
 
+	String scenarioName;
 	BasePage basePage;
 	HomePage homePage;
 	ProductSearchPage productSearchPage;
@@ -31,8 +34,9 @@ public class MercedesShopSteps {
 	VerificationAndOrderPlacementPage verificationAndOrderPlacementPage;
 
 	@Before
-	public void setup() {
+	public void setup(Scenario scenarioName) {
 		getDriver();
+		this.scenarioName = scenarioName.getName();
 		homePage = new HomePage();
 		productSearchPage = new ProductSearchPage();
 		productPage = new ProductPage();
@@ -52,11 +56,13 @@ public class MercedesShopSteps {
 	public void i_access_the_Mercedes_Benz_online_shop() throws Throwable {
 		homePage.accessHomePage();
 		homePage.agreeWithCookies();
+		TakeScreenshotUtils.TakeScreenshot("i_access_the_Mercedes_Benz_online_shop", scenarioName);
 	}
 
 	@When("^I look for Mercedes \"([^\"]*)\" Fashion & Beauty$")
 	public void i_look_for_Mercedes_Fashion_Beauty(String productType) throws Throwable {
 		homePage.openProductsList(productType);
+		TakeScreenshotUtils.TakeScreenshot("i_look_for_Mercedes_Fashion_Beauty", scenarioName);
 	}
 
 	@When("^I choose the \"([^\"]*)\" product$")
