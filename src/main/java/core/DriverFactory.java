@@ -36,7 +36,6 @@ public class DriverFactory {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		// WebDriver setup
-		System.out.println("Initializing Driver");
 		driver.manage().window().maximize();
 
 	}

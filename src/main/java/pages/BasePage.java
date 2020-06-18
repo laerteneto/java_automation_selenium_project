@@ -43,6 +43,7 @@ public class BasePage implements Data {
 	 */
 	public void clickElement(By locator) {
 		WebElement element = getDriver().findElement(locator);
+		moveToElementJS(element);
 		element.click();
 	}
 
@@ -51,10 +52,11 @@ public class BasePage implements Data {
 	 * 
 	 * @param locator Element locator
 	 */
-	public void clickJS(By locator) {
-		WebElement elemento = getDriver().findElement(locator);
+	public void clickElementJS(By locator) {
+		WebElement element = getDriver().findElement(locator);
 		JavascriptExecutor ex = (JavascriptExecutor) getDriver();
-		ex.executeScript("arguments[0].click()", elemento);
+		moveToElementJS(element);
+		ex.executeScript("arguments[0].click()", element);
 	}
 
 	/**
@@ -74,7 +76,7 @@ public class BasePage implements Data {
 	 * Wait for an element to be clickable
 	 * 
 	 * @param locator element locator
-	 * @param time max time
+	 * @param time    max time
 	 */
 	public void waitForElementToBeClickable(By locator, int time) {
 		WebDriverWait wait = new WebDriverWait(getDriver(), time);
@@ -85,7 +87,7 @@ public class BasePage implements Data {
 	 * Wait for an element to be visible
 	 * 
 	 * @param locator element locator
-	 * @param time max time
+	 * @param time    max time
 	 */
 	public void waitForElementToBeVisible(By locator, int time) {
 		WebDriverWait wait = new WebDriverWait(getDriver(), time);
@@ -109,7 +111,7 @@ public class BasePage implements Data {
 			return getDriver().findElements(locator).size() == 0;
 		}
 	}
-	
+
 	/**
 	 * Click on a button by text
 	 * 
@@ -118,7 +120,23 @@ public class BasePage implements Data {
 	public void clickButtonByText(String text) {
 		By button = BaseMap.buttonByText(text);
 		waitForElementToBeClickable(button, MAX_TIME);
-		clickJS(button);
+		clickElementJS(button);
 	}
 
+	/**
+	 * Move to an element before interacting with it, using JavaScript
+	 * 
+	 * @param element Web element
+	 */
+	public void moveToElementJS(WebElement element) {
+		((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true)", element);
+	}
+	
+	/**
+	 * Scroll to the bottom of the page 
+	 */
+	public void scrollToPageBottom(){
+		((JavascriptExecutor) getDriver()).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+	}
+	
 }

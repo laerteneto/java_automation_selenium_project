@@ -13,7 +13,7 @@ public class ProductSearchPage extends BasePage {
 	 */
 	public void clickOnAProductByName(String name) {
 		By link = ProductSearchMap.productLinkByName(name);
-		waitForElementToBeVisible(link, MAX_TIME);
-		clickElement(link);
+		waitForElementToBeClickable(link, MAX_TIME);
+		clickElementJS(link);
 	}
 }

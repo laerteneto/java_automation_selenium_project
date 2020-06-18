@@ -43,6 +43,6 @@ public class ProductPage extends BasePage {
 	public void goToShoppingBasket() {
 		By goToBasketButton = ProductMap.buttonByText(" Go to shopping basket");
 		waitForElementToBeClickable(goToBasketButton, MAX_TIME);
-		clickJS(goToBasketButton);
+		clickElementJS(goToBasketButton);
 	}
 }

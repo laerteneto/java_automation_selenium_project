@@ -1,5 +1,7 @@
 package pages;
 
+import java.awt.AWTException;
+
 import org.openqa.selenium.By;
 
 import maps.HomeMap;
@@ -12,28 +14,31 @@ public class HomePage extends BasePage {
 	public void accessHomePage() {
 		accessUrl(baseURL);
 	}
-	
+
 	/**
 	 * Agree with Cookies, if available
-	 * @throws InterruptedException 
+	 * 
+	 * @throws InterruptedException
 	 */
 	public void agreeWithCookies() {
 		By agreeWithCookiesButton = HomeMap.buttonByText("Agree");
 		if (elementExists(agreeWithCookiesButton, true)) {
 			clickElement(agreeWithCookiesButton);
-			forcedWait(10);
+			forcedWait(15);
 		}
 	}
 
 	/**
 	 * Open the products list by the banner
 	 * 
-	 * @param produtType Can be for example Woman, Men, and Children 
+	 * @param produtType Can be for example Woman, Men, and Children
+	 * @throws AWTException 
 	 */
-	public void openProductsList(String produtType) {
+	public void openProductsList(String produtType) throws AWTException {
 		By banner = HomeMap.fashionAndBeautyBannerByKind(produtType);
 		waitForElementToBeVisible(banner, MAX_TIME);
-		clickElement(banner);
+		scrollToPageBottom();
+		clickElementJS(banner);
 	}
 
 }

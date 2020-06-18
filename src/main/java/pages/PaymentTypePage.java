@@ -19,7 +19,7 @@ public class PaymentTypePage extends BasePage {
 		} else { // paymentType == PayPal
 			paymentOption = By.id("dcp-co-payment-modes_options-paypal");
 		}
-		clickJS(paymentOption);
+		clickElementJS(paymentOption);
 	}
 
 	/**
@@ -37,6 +37,6 @@ public class PaymentTypePage extends BasePage {
 			cardBrandOption = By.id("amex");
 		}
 		waitForElementToBeVisible(BaseMap.labelByText(cardBrand), MAX_TIME);
-		clickJS(cardBrandOption);
+		clickElementJS(cardBrandOption);
 	}
 }

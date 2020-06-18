@@ -27,7 +27,7 @@ public class AddressAndDeliveryPage extends BasePage {
 		writeTextInField(firstNameField, "Laerte");
 		
 		By salutationRadio = By.id("co_payment_address-salutationCode-radio-id-0");
-		clickJS(salutationRadio);
+		clickElementJS(salutationRadio);
 		
 		By lastNameField = By.id("co_payment_address-lastName");
 		writeTextInField(lastNameField, "Neto");
