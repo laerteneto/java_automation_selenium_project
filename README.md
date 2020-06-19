@@ -36,5 +36,5 @@ _________________
 ### Not required, but good to have:
 If you are using Eclipse IDE, you may Install the Cucumber Eclipse Plugin via Eclipse Marketplace in order to see the features with a better view.
 
-### The evidences:
+### The test evidences:
 The test evidences will be saved in *src/main/resources/screenshots*.
