@@ -2,7 +2,7 @@
 I used the Eclipse IDE in this project.
 
 ## Dependencies:
-We use maeven repository to take care of all dependencies. So, in order to use this framework, just import this project as a **Maeven project**. You may take a look in the dependencies inside of the pom.xml file
+We use maeven repository to take care of all dependencies. So, in order to use this framework, just import this project as a **Maeven project**. You may take a look in the dependencies inside of the pom.xml file.
 
 ## Setup:
 - This project works with **Java 1.8** and enconding UTF-8.
