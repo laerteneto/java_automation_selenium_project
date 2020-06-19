@@ -24,6 +24,7 @@ public class TakeScreenshotUtils {
 	 * Take a screenshot
 	 * 
 	 * @param step The name of the file you want to save
+	 * @param scenario The cucumber scenario you are executing 
 	 */
 	public static void TakeScreenshot(String step, String scenario) {
 		File scrFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
