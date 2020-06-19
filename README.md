@@ -2,7 +2,7 @@
 I used the Eclipse IDE in this project.
 
 ## Dependencies:
-We use maeven repository to take care of all dependencies. So, in order to use this framework, just import this project as a **Maeven project**.
+We use maeven repository to take care of all dependencies. So, in order to use this framework, just import this project as a **Maeven project**. You may take a look in the dependencies inside of the pom.xml file.
 
 ## Setup:
 - This project works with **Java 1.8** and enconding UTF-8.
@@ -26,7 +26,7 @@ Inside this project you will find the following drivers for **LINUX**:
 - Also, if you are using Windows Os Systems, make sure to add the ".exe" in the chromeDriverPath and firefoxDriverPath located inside src/main/java/Configurations.java
 
 ## How to choose between Chrome or Firefox:
-Go to the Configurations.java file located in *scr/main/java/core* and modify the browser enum as you want.
+Go to the Configurations.java file located in *scr/main/java/core* and modify the browser enum as you want. The Chrome is the default.
 
 ## How to run:
 - Execute the file *MercedesShopRunner.java* located in *src/main/java/runners* as a **JUnit test**.
@@ -36,5 +36,5 @@ _________________
 ### Not required, but good to have:
 If you are using Eclipse IDE, you may Install the Cucumber Eclipse Plugin via Eclipse Marketplace in order to see the features with a better view.
 
-### The evidences:
+### The test evidences:
 The test evidences will be saved in *src/main/resources/screenshots*.
